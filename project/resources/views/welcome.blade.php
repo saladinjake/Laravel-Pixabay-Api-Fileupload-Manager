@@ -190,22 +190,10 @@ height: 41px;}
                                  <div class="selected">select</div>
                                  <div class="deselected">unselect</div>
                             </div>
-                            <div class="product" id="2">
-                                  <img src="2.png" class="img" />
-                                 <div class="selected">select</div>
-                                 <div class="deselected">unselect</div>
-                            </div>
-                            <div class="product" id="3">
-                                  <img src="3.png" class="img" />
-                                 <div class="selected">select</div>
-                                 <div class="deselected">unselect</div>
-                            </div>
-                            <div class="product" id="4">
-                                  <img src="4.png" class="img" />
-                                 <div class="selected">select</div>
-                                 <div class="deselected">unselect</div>
-                            </div>
+
                         </div>
+
+                        <div id="paginationContainer"></div>
                      </div>
                   </div>
                 </div>
@@ -213,141 +201,6 @@ height: 41px;}
             </div>
           </div>
   </div>
-<script type="text/javascript">
-var selectedImages = document.getElementsByClassName('selected');
-var deSelectedImages = document.getElementsByClassName('deselected');
-let uploadedImages = [];
-let currentItem = selectedImages[0];
-let deselected = null;
-let selected =null;
-let imgUrl = null;
-let uploadBtn = document.getElementById("upload");
-//for selecting images into stack
-for(let checked =0; checked<selectedImages.length;checked++){
-    selectedImages[checked].addEventListener('click',function(e){
-        currentItem = selectedImages[checked];
-        deselected = currentItem.parentNode.querySelector(".deselected");
-        selected = currentItem.parentNode.querySelector(".selected");
-        imgUrl = currentItem.parentNode.querySelector(".img").src;
-        deselected.style.opacity =1;
-        selected.style.opacity =0;
-        uploadedImages.push(imgUrl)
-    })
-}
-//for deselecting image stack
-for(let checked =0; checked<deSelectedImages.length;checked++){
-    deSelectedImages[checked].addEventListener('click',function(e){
-        currentItem = deSelectedImages[checked];
-        deselected = currentItem.parentNode.querySelector(".deselected");
-        selected = currentItem.parentNode.querySelector(".selected");
-        imgUrl = currentItem.parentNode.querySelector(".img").src;
-        deselected.style.opacity =0;
-        selected.style.opacity =1;
-        let filteredCopy = uploadedImages.filter((image)=> image != imgUrl);
-        uploadedImages = filteredCopy;
-        console.log(uploadedImages)
-    })
-}
-
-//for uploading to servr
-uploadBtn.addEventListener("click",()=>{
-  for(let checked =0; checked<uploadedImages.length;checked++){
-    let url = uploadedImages[checked];
-    let realFilename =  GetFilename(url);
-
-    // *** Calling both function ***
-      toDataURL(url)
-      .then(dataUrl => {
-         console.log('Here is Base64 Url', dataUrl)
-         var fileData = dataURLtoFile(dataUrl, realFilename);
-         console.log("Here is JavaScript File Object",fileData)
-         // uploadFile(fileData);
-       })
-  }
-})
-
-function GetFilename(url)
-{
-   if (url)
-   {
-      var m = url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."));
-      return m;
-   }
-   return "";
-}
-
-// ***Here is the code for converting "image source" (url) to "Base64".***
-
-const toDataURL = url => fetch(url)
-      .then(response => response.blob())
-      .then(blob => new Promise((resolve, reject) => {
-            const reader = new FileReader()
-            reader.onloadend = () => resolve(reader.result)
-            reader.onerror = reject
-            reader.readAsDataURL(blob)
-      }))
-
-
-// ***Here is code for converting "Base64" to javascript "File Object".***
-
-  function dataURLtoFile(dataurl, filename) {
-     var arr = dataurl.split(',');
-     var mime = arr[0].match(/:(.*?);/)[1];
-     var bstr = atob(arr[1]);
-     var n = bstr.length;
-     var  u8arr = new Uint8Array(n);
-     while(n--){
-       u8arr[n] = bstr.charCodeAt(n);
-     }
-     return new File([u8arr], filename, {type:mime});
-  }
-
-const uploadFile = (file) =>{
-  let queryTerm = document.getElementById("searchForm").value;
-  let apiLink = "/put my upload link here";
-  fetch(apiLink, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: file
-    }).then(
-      response => response.json()
-    ).then(
-      success => console.log(success)
-    ).catch(
-      error => console.log(error)
-    );
-}
-
-
-
-const initializeLoader = () =>{
-  //show loader or spinner
-  const mainFrame = document.getElementById("gtd");
-  const loader = document.getElementById("loader");
-
-  loader.style.display="block";
-  loader.style.opacity = 1;
-
-
-}
-
-const clearLoader = () =>{
-  const mainFrame = document.getElementById("gtd");
-  const loader = document.getElementById("loader");
-  loader.style.opacity=0;
-  loader.style.display ="none";
-  mainFrame.style.display ="block";
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-    setTimeout(()=>{
-      initializeLoader();
-      clearLoader();
-    },5000);
-    //make fetch request on display ground
-})
-</script>
+<script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
   </body>
 </html>
