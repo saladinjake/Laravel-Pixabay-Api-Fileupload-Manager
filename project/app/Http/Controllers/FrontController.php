@@ -13,4 +13,6 @@ class FrontController extends Controller
     function create(){
        return view('index');
     }
+
+    
 }

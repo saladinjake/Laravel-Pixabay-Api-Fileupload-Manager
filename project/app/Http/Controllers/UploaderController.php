@@ -1,29 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Validator;
-use Illuminate\Http\Request;
+
 
 class UploaderController extends Controller
 {
     //
     public function uploadViaDevice(Request $request)
     {
-        if(!$request->hasFile('fileName')) {
+        if(!$request->hasFile('photos')) {
             return response()->json(['upload_file_not_found'], 400);
         }
         $allowedExtension=['gif','jpg','png'];
-        $files = $request->file('fileName');
+        $files = $request->file('photos');
         $errors = [];
         foreach ($files as $file) {
             $extension = $file->getClientOriginalExtension();
             $check = in_array($extension,$allowedExtension);
             if($check) {
-                foreach($request->fileName as $Files) {
-                    $path = $uploadFiles->store('public/uploads');
-                    $name = $uploadFiles->getClientOriginalName();
+                foreach($request->photos as $upFiles) {
+                    $path = $upFiles->store('uploads');
+                    $name = $upFiles->getClientOriginalName();
                 }
             } else {
                 return response()->json(['invalid_file_format'], 422);
