@@ -1,6 +1,5 @@
 export default class SearchPixaApi{
   constructor(){
-
     this.displayHeader = document.querySelector('#header');
     this.displayBox = document.querySelector('#imagesContainer');
     this.paginationContainer = document.querySelector('#paginationContainer');
@@ -21,7 +20,7 @@ export default class SearchPixaApi{
         evt.preventDefault();
         this.searchTerm = this.searchBox.value;
         console.log('The current search is: ',this.searchTerm);
-        refreshPage(1,this.searchTerm);
+        this.refreshPage(1,this.searchTerm);
      });
   }
 
@@ -50,13 +49,16 @@ export default class SearchPixaApi{
       headers: {
         "Accept": 'application/json',
         'Content-Type': 'application/json',
+
+      },
+      mode: 'cors',
+      body:{
         key: '9648595-648ea08d9441c4123d7acaff0',
          image_type: image_type,
          q: category,
          page: this.pageNumber,
          per_page: 9
-      },
-      mode: 'cors',
+      }
     })
       .then(response => response.json())
       .then(data => {
