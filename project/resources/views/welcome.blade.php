@@ -115,13 +115,33 @@ height: 41px;}
 
 }
 
+#gtd{
+  display:none;
+}
 
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin:0px auto;
+  margin-top:30%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 
 
 </style>
-<body class="antialiased">
+<div class="loader" id="loader">Loading...</div>
 
+<body class="antialiased">
+<div id="gtd">
   <div class=" px-6 py-4 ">
           <a href="#" class="text-lg text-gray-700">File Uploader</a>
             <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">Add new upload +</a>
@@ -155,7 +175,6 @@ height: 41px;}
                                     <a href="javascript:void(0);" id="Search" class="clicker" style="float:right">Search</a>
                                 </div>
                             </div>
-
                           </div>
                           <!-- <div class="clearfix"></div> -->
                          <input type="submit" id="upload" value="upload" />
@@ -166,26 +185,21 @@ height: 41px;}
                   <div id="result" style="position:absolute;margin-top:-240px;">
                      <div class="container-fluid">
                         <div class="row" id="imageView">
-
                             <div class="product" id="1">
                                  <img src="1.png" class="img" />
                                  <div class="selected">select</div>
                                  <div class="deselected">unselect</div>
                             </div>
-
                             <div class="product" id="2">
                                   <img src="2.png" class="img" />
                                  <div class="selected">select</div>
                                  <div class="deselected">unselect</div>
-
                             </div>
-
                             <div class="product" id="3">
                                   <img src="3.png" class="img" />
                                  <div class="selected">select</div>
                                  <div class="deselected">unselect</div>
                             </div>
-
                             <div class="product" id="4">
                                   <img src="4.png" class="img" />
                                  <div class="selected">select</div>
@@ -198,6 +212,7 @@ height: 41px;}
               </div>
             </div>
           </div>
+  </div>
 <script type="text/javascript">
 var selectedImages = document.getElementsByClassName('selected');
 var deSelectedImages = document.getElementsByClassName('deselected');
@@ -241,13 +256,12 @@ uploadBtn.addEventListener("click",()=>{
     let realFilename =  GetFilename(url);
 
     // *** Calling both function ***
-
       toDataURL(url)
       .then(dataUrl => {
          console.log('Here is Base64 Url', dataUrl)
          var fileData = dataURLtoFile(dataUrl, realFilename);
          console.log("Here is JavaScript File Object",fileData)
-         fileArr.push(fileData)
+         // uploadFile(fileData);
        })
   }
 })
@@ -288,8 +302,52 @@ const toDataURL = url => fetch(url)
      return new File([u8arr], filename, {type:mime});
   }
 
+const uploadFile = (file) =>{
+  let queryTerm = document.getElementById("searchForm").value;
+  let apiLink = "/put my upload link here";
+  fetch(apiLink, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: file
+    }).then(
+      response => response.json()
+    ).then(
+      success => console.log(success)
+    ).catch(
+      error => console.log(error)
+    );
+}
 
 
+
+const initializeLoader = () =>{
+  //show loader or spinner
+  const mainFrame = document.getElementById("gtd");
+  const loader = document.getElementById("loader");
+
+  loader.style.display="block";
+  loader.style.opacity = 1;
+
+
+}
+
+const clearLoader = () =>{
+  const mainFrame = document.getElementById("gtd");
+  const loader = document.getElementById("loader");
+  loader.style.opacity=0;
+  loader.style.display ="none";
+  mainFrame.style.display ="block";
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+    setTimeout(()=>{
+      initializeLoader();
+      clearLoader();
+    },5000);
+    //make fetch request on display ground
+})
 </script>
   </body>
 </html>
