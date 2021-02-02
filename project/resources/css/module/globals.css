@@ -1,0 +1,154 @@
+/*
+*@description :general block css file
+*
+*@author: Saladin Jake
+*
+*/
+
+/* Global Styles */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding:0;
+    margin: 0;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    /*font-family: "Roboto", "Helvetica Neue",Helvetica,Arial,sans-serif;
+    "Lato",Calibri,Arial,sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 14px;
+    /*font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Dosis', sans-serif;*/
+}
+
+
+h2 {
+ *font-family: 'Source Sans Pro', sans-serif;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* About */
+
+.about,
+._fellow,
+.mean_stack{
+    padding: 50px 0;
+}
+
+/* Services */
+
+.services {
+    padding: 50px 0;
+}
+
+.service-item {
+    margin-bottom: 30px;
+}
+
+
+a.selected {
+    color: red;
+}
+
+.center{
+  text-align: center;
+}
+
+
+.hi-icon-wrap {
+  text-align: center;
+  margin: 0 auto;
+  padding: 2em 0 1em;
+}
+
+.hi-icon {
+  display: inline-block;
+  font-size: 0px;
+  cursor: pointer;
+  margin: 15px 30px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.hi-icon:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  content: '';
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.hi-icon:before {
+  font-family: 'ecoicon';
+  speak: none;
+  font-size: 48px;
+  line-height: 90px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hi-icon-mobile:before {
+  content: "\e009";
+}
+
+.hi-icon-mail:before {
+  content: "\e00d";
+}
+
+.hi-icon-location:before {
+  content: "\e00e";
+}
+
+
+
+
+
+/*testing code*/
+
+
+.group{
+    clear: both;
+}
