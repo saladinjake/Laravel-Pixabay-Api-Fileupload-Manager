@@ -14,5 +14,8 @@ class FrontController extends Controller
        return view('index');
     }
 
-    
+    function viewAll(){
+       return view('uploaded');
+    }
+
 }

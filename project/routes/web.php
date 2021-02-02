@@ -16,6 +16,7 @@ use App\Http\Controllers\UploaderController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('image-list/create/new', [FrontController::class, 'create']);
+Route::get('image-list/lists', [FrontController::class, 'viewAll']);
 Route::post('image-list/upload/via/device', [UploaderController::class, 'uploadViaDevice']);
 // Route::post('image-list/store', 'FrontController@store');
 // Route::get('image-list/delete/{id}', 'FrontController@destroy');

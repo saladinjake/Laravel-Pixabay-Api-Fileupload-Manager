@@ -8,87 +8,112 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ asset('/css/application.css')}}" rel="stylesheet">
+ <style>
+ .product{
+   width:300px;
+ }
+ </style>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
-    <body class="antialiased">
+    <!-- Styles -->
+<!-- <div class="loader" id="loader">Loading...</div> -->
 
-      <div class=" px-6 py-4 ">
-              <a href="#" class="text-lg text-gray-700">File Uploader</a>
-                <a href="{{url('/')}}" style="float:right" class="text-lg text-gray-700">Back</a>
+
+<body class="antialiased">
+<div id="gtd">
+  <div class=" px-6 py-4 ">
+          <a href="{{url('/')}}" class="text-lg text-gray-700"><img style="height:50px;width:50px" src="{{ asset('img/target.png') }}" /></a>
+            <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">Add new upload +</a>
+  </div>
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+      @if (count($errors) > 0)
+          <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                @endforeach
+            </ul>
       </div>
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-          @if (count($errors) > 0)
-              <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+      @endif
+
+
+      <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;">
+          <div class="card">
+             <div class="image-wrapper">
+               <form method="post" enctype="multipart/form-data"  action="/image-list/upload/via/device" >
+                     {{ csrf_field() }}
+                     <br/>
+                     <h2 class="main">Upload your pictures from your device</h2><br/>
+                     <p>You can select multiple images from your device and upload them
+                     </p><br/><br/>
+                     <input type="file" class="form-control" name="photos[]" multiple style="border:3px solid #fafafa;padding:20px;height:100px" />
+                     <br /><br />
+                     <input type="submit" class="btn btn-primary" value="Upload" style="background-color:black;padding:10px;border-radius:25px;color:#fff" />
+               </form>
+              </div>
+              <div class="card-body">
+                  <div class="card-content">
+                     <!-- <h2 class="main">Welcome to our image search app</h2><br/>
+                     <p>We are motivated to empower you all across Africa
+                        by usage of this platform to upload and share images
+                     </p> -->
+
+                     <div class="inner cover">
+                         <div class="row">
+                             <div class="col-sm-12">
+                                 <div id="url" class="column">
+
+
+                                 </div>
+                             </div>
+                           </div>
+                           <div class="clearfix"></div>
+                          <!-- <input type="submit" id="upload" value="upload" /> -->
+                         </div>
+                     </div>
+                  </div>
+                  <br/><br/>
+                  <!-- <div class="read-more text-center">
+                      <a href="{{url('/image-list/create/new')}}" class="btn btn-primary btn-sm">click here to upload your images</a>
+                  </div> -->
+              </div>
           </div>
-          @endif
+      </div>
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                     <h1> File Uploader Project</h1>
-                </div>
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                  <div class="ml-4 text-lg leading-7 font-semibold">
 
-                                  <form method="post" enctype="multipart/form-data"  action="/image-list/upload/via/device" >
-                                        {{ csrf_field() }}
-                                        <div class="form-group">
-                                        <label for="Product Name">Upload Pictures from device</label>
 
-                                        </div>
-                                        <label for="Product Name">Product photos (can attach more than one):</label>
-                                        <br />
-                                        <input type="file" class="form-control" name="photos[]" multiple style="border:3px solid #fafafa;padding:20px" />
-                                        <br /><br />
-                                        <input type="submit" class="btn btn-primary" value="Upload" style="background-color:green;padding:10px;border-radius:25px" />
-                                  </form>
 
-                                </div>
-                            </div>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    You can select more than one files form your device to our local server.
-                                </div>
+
+
+
+
+
+
+                  <!-- <div id="result" style="position:absolute;margin-top:-240px;">
+                     <div class="container-fluid">
+                        <div class="row" id="imageView">
+                            <div class="product" id="1">
+                                 <img src="1.png" class="img" />
+                                 <div class="selected">select</div>
+                                 <div class="deselected">unselect</div>
                             </div>
                         </div>
-
-
-
-
-                    </div>
+                        <div id="paginationContainer"></div>
+                     </div>
+                  </div> -->
                 </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-
-
-                            <a href="#" class="ml-1">
-                                &copy
-                            </a>
-
-
-
-                            <a href="#" class="ml-1">
-                                Saladin
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        fileuploader project
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
-      
-    </body>
+          </div>
+  </div>
+
+
+
+  <!-- Footer -->
+
+<script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
+  </body>
 </html>

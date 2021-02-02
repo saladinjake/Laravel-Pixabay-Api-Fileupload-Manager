@@ -38,49 +38,16 @@
       @endif
 
 
-      <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;">
-          <div class="card">
-             <div class="image-wrapper">
-                <img src="{{ asset('img/target.png') }}" />
-              </div>
-              <div class="card-body">
-                  <div class="card-content">
-                     <h2 class="main">Welcome to our image search app</h2><br/>
-                     <p>We are motivated to empower you all across Africa
-                        by usage of this platform to upload and share images
-                     </p>
 
-                     <div class="inner cover">
-                         <div class="row">
-                             <div class="col-sm-12">
-                                 <div id="url" class="column">
-
-                                     <input style="float:left;width:400px;height:56px" id="webUrl" type="text" placeholder="Search the pixabay for images by name" value="" />
-                                     <a href="javascript:void(0);" id="Search" class="clicker" style="float:right">Search</a>
-                                 </div>
-                             </div>
-                           </div>
-                           <div class="clearfix"></div>
-                          <!-- <input type="submit" id="upload" value="upload" /> -->
-                         </div>
-                     </div>
-                  </div>
-                  <br/><br/>
-                  <div class="read-more text-center">
-                      <a href="{{url('/image-list/create/new')}}" class="btn btn-primary btn-sm">click here to upload your images</a>
-                  </div>
-              </div>
-          </div>
-      </div>
 
 
 
 
       <section id="about" class="about" >
       <div class="my_wrapper">
-      <div class="container-fluid" style="position: absolute;margin-top:-240px">
+      <div class="container-fluid" style="">
           <div class="row">
-              <h2>Search Result</h2>
+              <h2>My uploaded files</h2>
               <div class="row"  id="imageView">
                   <div class="col-sm-4 col-md-4 col-lg-4 product" id="1">
                       <div class="card cardbox " >
@@ -95,8 +62,8 @@
                               </div>
                               <div class="">
 
-                                <div class="selected butt">select</div>
-                                <div class="deselected ">unselect</div>
+                                  <div class="delete"><img src="{{ asset('img/delete.png') }}" /></div>
+
 
                               </div>
                           </div>
@@ -114,8 +81,7 @@
 
                               </div>
                               <div class="">
-                                <div class="selected">select</div>
-                                <div class="deselected">unselect</div>
+                                    <div class="delete"><img src="{{ asset('img/delete.png') }}" /></div>
                               </div>
                           </div>
                       </div>
@@ -131,8 +97,7 @@
                                 <p></p> -->
                               </div>
                               <div class="">
-                                <div class="selected">select</div>
-                                <div class="deselected">unselect</div>
+                                  <div class="delete"><img  src="{{ asset('img/delete.png') }}" /></div>
                               </div>
                           </div>
                       </div>
