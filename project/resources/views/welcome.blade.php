@@ -17,7 +17,7 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <!-- Styles -->
-<!-- <div class="loader" id="loader">Loading...</div> -->
+<div class="loader" id="loader">Loading...</div>
 
 
 <body class="antialiased">
@@ -55,7 +55,7 @@
                              <div class="col-sm-12">
                                  <div id="url" class="column">
 
-                                     <input style="float:left;width:400px;height:56px" id="webUrl" type="text" placeholder="Search the pixabay for images by name" value="" />
+                                     <input style="float:left;width:400px;height:56px" id="searchBox" type="text" placeholder="Search the pixabay for images by name" value="" />
                                      <a href="javascript:void(0);" id="Search" class="clicker" style="float:right">Search</a>
                                  </div>
                              </div>
@@ -75,7 +75,6 @@
 
 
 
-
       <section id="about" class="about" >
       <div class="my_wrapper">
       <div class="container-fluid" style="position: absolute;margin-top:-240px">
@@ -89,13 +88,11 @@
                           </div>
                           <div class="card-body">
                               <div class="card-content">
-                                <!-- <h3 class="main"</h3>
-                                <p></p> -->
 
                               </div>
                               <div class="">
 
-                                <div class="selected butt">select</div>
+                                <div onclick="console.log('hello')" class="selected butt">select</div>
                                 <div class="deselected ">unselect</div>
 
                               </div>
@@ -109,8 +106,7 @@
                           </div>
                           <div class="card-body">
                               <div class="card-content">
-                                 <!-- <h3 class="main"</h3>
-                                 <p></p> -->
+
 
                               </div>
                               <div class="">
@@ -121,19 +117,21 @@
                       </div>
                   </div>
                   <div class="col-sm-4 col-md-4 col-lg-4 product" id="3">
+
                       <div class="card cardbox">
                          <div class="image-wrapper">
                             <img src="img/network.png" class="img">
                           </div>
                           <div class="card-body">
                               <div class="card-content">
-                                <!-- <h3 class="main"</h3>
-                                <p></p> -->
+
+
                               </div>
-                              <div class="">
-                                <div class="selected">select</div>
+                              <div class="" style="">
+                                <div class="selected" >select</div>
                                 <div class="deselected">unselect</div>
                               </div>
+
                           </div>
                       </div>
                   </div>
@@ -152,12 +150,12 @@
 
 
 
-                  <!-- <div id="result" style="position:absolute;margin-top:-240px;">
+                  <!-- <div  style="position:absolute;margin-top:-240px;clear:both">
                      <div class="container-fluid">
                         <div class="row" id="imageView">
                             <div class="product" id="1">
                                  <img src="1.png" class="img" />
-                                 <div class="selected">select</div>
+                                 <div class="selected" onclick="console.log('hello')">select</div>
                                  <div class="deselected">unselect</div>
                             </div>
                         </div>
@@ -171,6 +169,7 @@
   </div>
 
 
+<a id="upload" href="#" class="link-to-portfolio" target="”_blank”"><span>Go</span></a>
 
   <!-- Footer -->
 

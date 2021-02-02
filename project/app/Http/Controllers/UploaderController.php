@@ -7,7 +7,7 @@ use Validator;
 
 class UploaderController extends Controller
 {
-    //
+    // method dependency injection
     public function uploadViaDevice(Request $request)
     {
         if(!$request->hasFile('photos')) {
@@ -25,9 +25,11 @@ class UploaderController extends Controller
                     $name = $upFiles->getClientOriginalName();
                 }
             } else {
-                return response()->json(['invalid_file_format'], 422);
+                return view("error"); 
+                //response()->json(['invalid_file_format'], 422);
             }
-            return response()->json(['file_uploaded'], 200);
+            return view('success');
+             //response()->json(['file_uploaded'], 200);
         }
     }
 }

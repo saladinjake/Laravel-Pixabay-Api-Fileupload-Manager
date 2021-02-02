@@ -42,7 +42,7 @@ text-align: center;
 
 .product {
 display: inline-block;
-width: 200px;
+width: 300px;
 height: 200px;
 margin: 10px;
 border-radius: 5px;
@@ -65,7 +65,7 @@ background: #fafafa;
            width: 34px;
            height: 34px;
            margin-bottom: 0;
-          
+
            border-radius: 100%;
            background: #FFFFF;
            border: 1px solid transparent;
