@@ -121,6 +121,7 @@
                       <div class="card cardbox">
                          <div class="image-wrapper">
                             <img src="img/network.png" class="img">
+                            
                           </div>
                           <div class="card-body">
                               <div class="card-content">
