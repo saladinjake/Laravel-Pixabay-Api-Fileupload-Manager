@@ -69,7 +69,7 @@ export default class Uploader{
               console.log('Here is Base64 Url', dataUrl)
               var fileData = dataURLtoFile(dataUrl, realFilename);
               console.log("Here is JavaScript File Object",fileData)
-              // _uploadFileToServer(fileData);
+              //this. _uploadFileToServer(fileData);
             })
        }
      })
