@@ -63,9 +63,7 @@
                                  <div class="selected">select</div>
                                  <div class="deselected">unselect</div>
                             </div>
-
                         </div>
-
                         <div id="paginationContainer"></div>
                      </div>
                   </div>
