@@ -13,3 +13,7 @@
 @import './chips/loading.css';
 @import './fonts/fonts.css';
 @import './pages/landing.css';
+@import './pages/error_page.css';
+@import './pages/modal_action.css';
+@import './pages/success_page.css';
+@import './pages/view_uploads.css';
