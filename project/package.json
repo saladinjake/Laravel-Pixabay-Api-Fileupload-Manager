@@ -1,4 +1,8 @@
 {
+  "name": "unittest-frontend-backend",
+  "version": "1.0.0",
+  "description": "unit test and integration test with web driver webpack mocha selenium driver ",
+
     "private": true,
     "scripts": {
         "dev": "npm run development",
@@ -7,12 +11,47 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+
+
+        "zglobal-install": "npm i --global selenium-standalone@5.0.0 http-server@0.9.0 && selenium-standalone install",
+        "zserver": "http-server ./static -p 8888 -c-1",
+        "zbuild": "webpack --config webpack.conf.js",
+        "zbuild-dev": "npm run server & webpack --config webpack.conf.js --watch",
+        "zstart-selenium-server": "selenium-standalone start",
+        "ztest": "npm run integration-test && npm run unit-test",
+        "zunit-test": "karma start karma.conf.js --single-run --no-auto-watch",
+        "zunit-test-background": "karma start karma.conf.js",
+        "zintegration-test": "wdio ./wdio.conf.js"
     },
+    "keywords": [
+       "webdriver",
+       "webdriverio",
+       "selenium",
+       "integration",
+       "testing"
+     ],
+     "author": "saladin jake",
+     "license": "ISC",
+     "dependencies": {
+     },
     "devDependencies": {
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "chai": "^3.5.0",
+        "chai-as-promised": "^5.2.0",
+        "karma": "^0.13.8",
+        "karma-chrome-launcher": "^0.2.0",
+        "karma-mocha": "^0.2.0",
+        "karma-sinon-chai": "^1.0.0",
+        "karma-webpack": "^1.7.0",
+        "mocha": "^2.4.5",
+        "sinon": "^1.17.2",
+        "sinon-chai": "^2.8.0",
+        "wdio-mocha-framework": "^0.2.11",
+        "webdriverio": "^3.4.0",
+        "webpack": "^1.12.14"
     }
 }
