@@ -1,5 +1,13 @@
+/*
+*@description: the main css file: this is the css barrel script
+*
+*@author: Saladin Jake
+*
+*/
+@import './modules/main.css';
 @import './header.css';
 @import './footer.css';
+@import './globals.css';
 @import './fonts.css';
 @import './breadcrumbs.css';
 @import './landing.css';
