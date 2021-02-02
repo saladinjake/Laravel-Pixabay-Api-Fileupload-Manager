@@ -1,5 +1,9 @@
 @import './header.css';
 @import './footer.css';
-@import 'fonts.css';
+@import './fonts.css';
 @import './breadcrumbs.css';
-@import 'landing.css';
+@import './landing.css';
+@import './animations.css';
+@import './buttons.css';
+@import './fonts.css';
+@import './loading.css';
