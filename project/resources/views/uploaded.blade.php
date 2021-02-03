@@ -17,7 +17,7 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <!-- Styles -->
-<!-- <div class="loader" id="loader">Loading...</div> -->
+<div class="loader" id="loader">Loading...</div>
 
 
 <body class="antialiased">
@@ -27,81 +27,68 @@
             <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">Add new upload +</a>
   </div>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-      @if (count($errors) > 0)
-          <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-      </div>
-      @endif
-
-
-
-
-
-
 
       <section id="about" class="about" >
-      <div class="my_wrapper">
+      <div class="my_wrapper" id="pageupload">
       <div class="container-fluid" style="">
           <div class="row">
               <h2>My uploaded files</h2>
               <div class="row"  id="imageView">
-                  <div class="col-sm-4 col-md-4 col-lg-4 product" id="1">
-                      <div class="card cardbox " >
-                         <div class="image-wrapper">
-                            <img src="img/target.png" class="img">
-                          </div>
-                          <div class="card-body">
-                              <div class="card-content">
-                                <!-- <h3 class="main"</h3>
-                                <p></p> -->
 
+                @foreach($images as $image)
+                  @if(strlen($image) >0)
+                      <div class="col-sm-4 col-md-4 col-lg-4 product" id="{{time().$image}}">
+                          <div class="card cardbox " >
+                             <div class="image-wrapper">
+                                <img src="{{ url('/uploads/'. $image)}}" class="img">
                               </div>
-                              <div class="">
+                              <div class="card-body">
+                                  <div class="card-content">
+                                    <!-- <h3 class="main"</h3>
+                                    <p></p> -->
 
-                                  <div class="delete"><img src="{{ asset('img/delete.png') }}" /></div>
+                                  </div>
+                                  <div class="">
+
+                                    <form class="col-xs-2" method="POST" action="/images/{{$image}}">
+
+                                        {!! csrf_field() !!}
+
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                          <div class="delete" onclick="run()"><img src="{{ asset('img/delete.png') }}" /></div>
+                                    </form>
 
 
+
+
+                                  </div>
                               </div>
                           </div>
                       </div>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-lg-4 product" id="2">
-                      <div class="card cardbox">
-                         <div class="image-wrapper">
-                            <img src="img/team128.png" class="img">
-                          </div>
-                          <div class="card-body">
-                              <div class="card-content">
-                                 <!-- <h3 class="main"</h3>
-                                 <p></p> -->
+                  @endif
 
-                              </div>
-                              <div class="">
-                                    <div class="delete"><img src="{{ asset('img/delete.png') }}" /></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-lg-4 product" id="3">
-                      <div class="card cardbox">
-                         <div class="image-wrapper">
-                            <img src="img/network.png" class="img">
-                          </div>
-                          <div class="card-body">
-                              <div class="card-content">
-                                <!-- <h3 class="main"</h3>
-                                <p></p> -->
-                              </div>
-                              <div class="">
-                                  <div class="delete"><img  src="{{ asset('img/delete.png') }}" /></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+
+
+                @endforeach
+
+                @if(count($errors) > 0)
+                <div class="col-sm-4 col-md-4 col-lg-4 product" id="{{time()}}">
+                    <div class="card cardbox " >
+
+                        <div class="card-body">
+                            <div class="card-content">
+                              <h3 class="main">No images uploaded yet!!</h3>
+                              <p>Upload one by clicking the create button at the top right of the page.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+
               </div>
           </div>
       </div>
@@ -140,5 +127,13 @@
   <!-- Footer -->
 
 <script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
+<script type="text/javascript">
+function run(){
+  console.log("hello")
+}
+ document.addEventListener('DOMContentLoaded',()=>{
+
+ })
+</script>
   </body>
 </html>

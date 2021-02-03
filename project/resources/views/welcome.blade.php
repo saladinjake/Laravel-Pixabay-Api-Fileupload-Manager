@@ -76,7 +76,7 @@
 
 
       <section id="about" class="about" >
-      <div class="my_wrapper">
+      <div class="my_wrapper" id="landing">
       <div class="container-fluid" style="position: absolute;margin-top:-240px">
           <div class="row">
               <h2>Search Result</h2>

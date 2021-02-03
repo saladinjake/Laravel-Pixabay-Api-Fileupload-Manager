@@ -13,6 +13,7 @@
         "prod": "npm run production",
         "production": "mix --production"
 
+
     },
     "keywords": [
        "webdriver",
@@ -29,19 +30,7 @@
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "chai": "^3.5.0",
-        "chai-as-promised": "^5.2.0",
-        "karma": "^0.13.8",
-        "karma-chrome-launcher": "^0.2.0",
-        "karma-mocha": "^0.2.0",
-        "karma-sinon-chai": "^1.0.0",
-        "karma-webpack": "^1.7.0",
-        "mocha": "^2.4.5",
-        "sinon": "^1.17.2",
-        "sinon-chai": "^2.8.0",
-        "wdio-mocha-framework": "^0.2.11",
-        "webdriverio": "^3.4.0",
-        "webpack": "^1.12.14"
+        "postcss": "^8.1.14"
+
     }
 }

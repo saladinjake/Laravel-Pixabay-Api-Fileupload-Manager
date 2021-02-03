@@ -204,10 +204,13 @@ class Uploader{
    }
 
    static attachEvents(){
-      let UploaderClass = new Uploader();
-      UploaderClass.onHandleSelection();
-      UploaderClass.onHandleDeselection();
-      UploaderClass.onHandleUpload();
+     if(document.getElementById("landing")){
+       let UploaderClass = new Uploader();
+       UploaderClass.onHandleSelection();
+       UploaderClass.onHandleDeselection();
+       UploaderClass.onHandleUpload();
+     }
+
    }
 
 

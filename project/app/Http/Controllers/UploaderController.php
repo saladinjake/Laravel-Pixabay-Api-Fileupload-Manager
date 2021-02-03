@@ -19,13 +19,13 @@ class UploaderController extends Controller
         foreach ($files as $file) {
             $extension = $file->getClientOriginalExtension();
             $check = in_array($extension,$allowedExtension);
-            if($check) {
+            if($check ) {
                 foreach($request->photos as $upFiles) {
                     $path = $upFiles->store('uploads');
                     $name = $upFiles->getClientOriginalName();
                 }
             } else {
-                return view("error"); 
+                return view("error");
                 //response()->json(['invalid_file_format'], 422);
             }
             return view('success');
