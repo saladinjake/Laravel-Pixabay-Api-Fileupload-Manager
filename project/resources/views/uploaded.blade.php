@@ -50,13 +50,18 @@
                                   </div>
                                   <div class="">
 
-                                    <form class="col-xs-2" method="POST" action="/images/{{$image}}">
+                                    <form class="col-xs-2" method="POST" action="{{ url('image-list/'. $image .'/delete' ) }}">
 
                                         {!! csrf_field() !!}
 
                                         <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_file" value="{{$image}}">
 
-                                          <div class="delete" onclick="run()"><img src="{{ asset('img/delete.png') }}" /></div>
+                                        <button type="submit" class="fa fa-times pull-left" id="deleteFileButton">
+                                           <div class="delete"><img src="{{ asset('img/delete.png') }}" /></div>
+                                        </button>
+
+
                                     </form>
 
 

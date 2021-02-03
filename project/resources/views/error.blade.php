@@ -14,10 +14,10 @@
    width:300px;
  }
  </style>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     </head>
     <!-- Styles -->
-<!-- <div class="loader" id="loader">Loading...</div> -->
+<div class="loader" id="loader">Loading...</div>
 
 
 <body class="antialiased">
@@ -27,15 +27,7 @@
             <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">Add new upload +</a>
   </div>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-      @if (count($errors) > 0)
-          <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-      </div>
-      @endif
+
 
 
       <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;">

@@ -17,7 +17,7 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <!-- Styles -->
-<!-- <div class="loader" id="loader">Loading...</div> -->
+<div class="loader" id="loader">Loading...</div>
 
 
 <body class="antialiased">
@@ -43,7 +43,7 @@
              <div class="image-wrapper">
 
                      <br/>
-                     <h2 class="main">Upload was successful</h2><br/>
+                     <h2 class="main">{{$message || "Success"}}</h2><br/>
                      <p>Please wait ...
                      </p><br/><br/>
               </div>
@@ -91,8 +91,8 @@
 <script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
 <script type="text/javascript">
   setTimeout(()=>{
-       window.location.href="http://localhost:8000/"
-  },3000)
+       window.location.href="http://localhost:8000/image-list/lists"
+  },6000)
 </script>
   </body>
 </html>

@@ -36,16 +36,26 @@ class FrontController extends Controller
        return view('uploaded',['images'=>$images, 'errors'=>$errors]);
     }
 
-    function delete(){
-      $file_pointer = "test.txt";
+    function delete(Request $request){
+      $path = public_path('uploads');
+        $file_pointer = $request->get('_file');
+        $files = scandir($path);
+        $errors = [];
+        $images = [];
+        foreach ($files as $key => $file) {
+            $file =  $file;
+            if (in_array( $file_pointer,$files))
+            {
+              if (!unlink(public_path() .'/uploads/'.$file_pointer)) {
+                  return view('error',['message'=>'error in deleting image']);
+              }
+              else {
+                  return view('success',['message'=>"$file_pointer has been deleted"]);
+              }
+            }
+        }
 
-        // Use unlink() function to delete a file  
-        if (!unlink($file_pointer)) {
-            echo ("$file_pointer cannot be deleted due to an error");
-        }
-        else {
-            echo ("$file_pointer has been deleted");
-        }
+
     }
 
 }
