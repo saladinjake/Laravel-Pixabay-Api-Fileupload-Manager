@@ -195,6 +195,7 @@ class Uploader{
      this.deselected = null;
      this.selected =null;
      this.imgUrl = null;
+     this.uploadUrl = "./"
      this.uploadBtn = document.getElementById("upload");
      if(!_singleton2){
         _singleton2 = this;
@@ -256,32 +257,18 @@ class Uploader{
          // *** Calling both function ***
            toDataURL(url)
            .then(dataUrl => {
-              console.log('Here is Base64 Url', dataUrl)
               var fileData = dataURLtoFile(dataUrl, realFilename);
               console.log("Here is JavaScript File Object",fileData)
-              //this. _uploadFileToServer(fileData);
+              //this._uploadFileToServer(fileData);
             })
        }
      })
    }
 
-  _uploadFileToServer(file){
-     let queryTerm = document.getElementById("searchForm").value;
-     let apiLink = "/put my upload link here";
-     fetch(apiLink, {
-         method: 'POST',
-         headers: {
-           "Content-Type": "application/json"
-         },
-         body: file
-       }).then(
-         response => response.json()
-       ).then(
-         success => console.log(success)
-       ).catch(
-         error => console.log(error)
-       );
-   }
+  _uploadFileToServer(file,postUrl){
+    return UploadService.uploadFile(file,postUrl);
+  }
+
 
 }
 
@@ -305,3 +292,53 @@ class EngineApp{
 
 //runner
 EngineApp.attachEvents();
+
+
+
+
+
+
+
+
+
+
+
+class UploadService {
+  static _(el){
+      return document.getElementById(el);
+  }
+
+  static uploadFile(file, postUrl) {
+    // var file = UploadService._("file1").files[0];
+    var formdata = new FormData();
+    formdata.append(file.name, file);
+    var ajax = new XMLHttpRequest();
+    ajax.upload.addEventListener("progress", progressHandler, false);
+    ajax.addEventListener("load", completeHandler, false);
+    ajax.addEventListener("error", errorHandler, false);
+    ajax.addEventListener("abort", abortHandler, false);
+    ajax.open("POST", postUrl);
+    ajax.send(formdata);
+  }
+
+  static progressHandler(event) {
+    UploadService._("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+    var percent = (event.loaded / event.total) * 100;
+    UploadService._("progressBar").value = Math.round(percent);
+    UploadService._("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+  }
+
+  static completeHandler(event) {
+    UploadService._("status").innerHTML = event.target.responseText;
+    UploadService._("progressBar").value = 0; //wil clear progress bar after successful upload
+  }
+
+  static errorHandler(event) {
+    UploadService._("status").innerHTML = "Upload Failed";
+  }
+
+  static  abortHandler(event) {
+    UploadService._("status").innerHTML = "Upload Aborted";
+  }
+
+}
