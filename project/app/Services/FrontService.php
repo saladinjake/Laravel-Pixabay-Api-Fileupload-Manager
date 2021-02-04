@@ -6,6 +6,8 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use App\Services\Contracts\FrontServiceInterface;
+
 
 /**
  * The path to the "home" service provider for your application.
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
  *
  * @description : FrontService iterates through upload folder and presets for display and handles delete request
  */
-class FrontService
+class FrontService  implements FrontServiceInterface
 {
   /**
    *@return : Array of images

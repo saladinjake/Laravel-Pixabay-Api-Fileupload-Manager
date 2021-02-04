@@ -2,14 +2,14 @@
 namespace App\Services;
 use Illuminate\Http\Request;
 use Validator;
-/**
-
+use App\Services\Contracts\UploadServiceInterface;
+/*
  *
  * This is the upload  service provider for search and display entity .
  *
  * @description : UploadService uploads files to server
  */
-class UploadService
+class UploadService implements UploadServiceInterface
 {
     public function uploadViaDevice(Request $request)
     {
