@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
-use App\Services\UploadService;
+use App\Services\Contracts\UploadServiceInterface;
 
 /**
  * The path to the "upload" controller for your application.

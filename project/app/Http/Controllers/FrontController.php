@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 
-use App\Services\FrontService;
+use App\Services\Contracts\FrontServiceInterface;
 
 /**
  * The path to the "home" controller for your application.
@@ -21,7 +21,7 @@ class FrontController extends Controller
    *@var : FrontService $homeService
    *@return : null
    */
-    public function __construct(Request $request,FrontService $homeService){
+    public function __construct(Request $request,FrontServiceInterface $homeService){
       $this->requestHandler = $request;
       $this->homeServiceHandler = $homeService;
     }
