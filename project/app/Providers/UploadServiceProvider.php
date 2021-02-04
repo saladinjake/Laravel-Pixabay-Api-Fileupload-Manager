@@ -14,7 +14,7 @@ class UploadServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      $this->app->bind('App\Services\UploadService', function ($app) {
+      $this->app->bind('App\Services\Contracts\UploadServiceInterface', function ($app) {
         return new UploadService();
       });
     }

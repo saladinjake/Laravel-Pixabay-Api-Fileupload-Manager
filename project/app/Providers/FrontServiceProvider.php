@@ -14,7 +14,7 @@ class FrontServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      $this->app->bind('App\Services\FrontService', function ($app) {
+      $this->app->bind('App\Services\Contracts\FrontServiceInterface', function ($app) {
         return new FrontService();
       });
     }

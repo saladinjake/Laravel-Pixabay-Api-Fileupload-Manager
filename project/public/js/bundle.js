@@ -369,36 +369,33 @@ class UploadService {
   }
 
   static uploadFile(file, postUrl) {
-    // var file = UploadService._("hidden_uploads").files[0];
-    // var formdata = new FormData();
-    // formdata.append("hidden_uploads", file);
-    // console.log(formdata.toString());
-
     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     fetch('image-list/apiupload', {
       headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json, text-plain, */*",
-                            "X-Requested-With": "XMLHttpRequest",
-                            "X-CSRF-TOKEN": token
+          "Content-Type": "application/json",
+          "Accept": "application/json, text-plain, */*",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-TOKEN": token
       },
       method: 'post',
-                          // credentials: "same-origin",
-
+      // credentials: "same-origin",
       body: JSON.stringify({
-
            name: "saladin",
           image_url: file,
-
-
         })
     })
-                      .then(response => response.json())
-                      .then(data =>{
-                        console.log(data);
-                      }).catch(e =>{
-                         throw new Error(e)
-                      })
+    .then(response => response.json())
+    .then(data =>{
+          let loader = document.getElementById("uploadViaApi");
+          loader.disabled=false;
+          // document.getElementById("uploadViaApi").style.display="none";
+          loader.classList.remove('loader');
+          var notification = alertify.notify('Upload successful', 'success', 5, function(){  console.log('dismissed'); });
+
+          document.getElementById("showformbox").click();
+          }).catch(e =>{
+                throw new Error(e)
+       })
   }
 
 

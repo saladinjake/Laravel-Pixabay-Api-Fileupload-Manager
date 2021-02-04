@@ -29,7 +29,8 @@
 <div id="gtd">
   <div class=" px-6 py-4 ">
           <a href="{{url('/')}}" class="text-lg text-gray-700"><img style="height:50px;width:50px" src="{{ asset('img/target.png') }}" /></a>
-            <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">Add new upload +</a>
+<a href="{{url('/image-list/lists')}}" style="float:right" class="text-lg text-gray-700">  View List</a>
+            <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">   Add new upload + |</a>
   </div>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
       @if (count($errors) > 0)
