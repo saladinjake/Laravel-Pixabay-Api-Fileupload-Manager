@@ -13,7 +13,6 @@ class FrontService
        $allowedExtension=['gif','jpg','jpeg','png'];
        $errors = [];
        $images = [];
-
        foreach ($files as $key => $file) {
            $file =  $file;
            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
@@ -32,7 +31,7 @@ class FrontService
       return $result;
     }
 
-    public function delete(Request $request){
+    public function deleteRequest(Request $request){
       $path = public_path('uploads');
         $file_pointer = $request->get('_file');
         $files = scandir($path);
@@ -43,13 +42,21 @@ class FrontService
             if (in_array( $file_pointer,$files))
             {
               if (!unlink(public_path() .'/uploads/'.$file_pointer)) {
-                  return view('error',['message'=>'error in deleting image']);
+                  array_push($errors,'error in deleting image');
+                  // return view('error',['message'=>'']);
               }
               else {
-                  return view('success',['message'=>"$file_pointer has been deleted"]);
+                   array_push($images,"$file_pointer has been deleted");
+                  // return view('success',['message'=>"$file_pointer has been deleted"]);
               }
             }
         }
+
+        $results = array(
+         'errors' => $errors,
+         'success'  => $images
+        );
+       return $result;
 
 
     }
