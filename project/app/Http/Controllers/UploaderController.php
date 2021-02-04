@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
-
+use App\Services\UploadService;
 
 class UploaderController extends Controller
 {
@@ -38,7 +38,7 @@ class UploaderController extends Controller
        $result =$bodyContent = $request->all();
 
        if($request->has("image_url"))
-          {
+       {
            $message = '';
            $image = '';
            if(filter_var($request->get("image_url"), FILTER_VALIDATE_URL))
@@ -69,11 +69,8 @@ class UploaderController extends Controller
             'message' => $message,
             'image'  => $image
            );
-             
             return response()->json([ $output], 200);
           }
           return response()->json(['error'], 200);
-
-
     }
 }
