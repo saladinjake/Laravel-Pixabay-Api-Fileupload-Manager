@@ -51,7 +51,7 @@ class UploaderController extends Controller
                 if(in_array($extension, $allowed_extension))
                 {
                      $image_data = file_get_contents($request->get("image_url"));
-                     $new_image_path = "uploads/" . rand() . "." . $extension;
+                     $new_image_path = public_path(). "/uploads/" . rand() . "." . $extension;
                      file_put_contents($new_image_path, $image_data);
                      $message = 'Image Uploaded';
                      $image = '<img src="'.$new_image_path.'" class="img-responsive img-thumbnail"  />';
@@ -63,15 +63,17 @@ class UploaderController extends Controller
            }
            else
            {
-            $message = 'Invalid Url';
+            $message = 'Invalid image url';
            }
            $output = array(
             'message' => $message,
             'image'  => $image
            );
-           echo json_encode($output);
+             
+            return response()->json([ $output], 200);
           }
+          return response()->json(['error'], 200);
 
-       return response()->json([$result,], 200);
+
     }
 }

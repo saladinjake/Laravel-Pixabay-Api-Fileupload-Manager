@@ -23,7 +23,7 @@ function GetFilename(url)
 
 // ***Here is the code for converting "image source" (url) to "Base64".***
 
-const toDataURL =  async (url) =>  fetch(url)
+const toDataURL =   (url) =>  fetch(url)
   .then(response => response.blob())
   .then(blob => new Promise((resolve, reject) => {
       const reader = new FileReader()
@@ -34,7 +34,7 @@ const toDataURL =  async (url) =>  fetch(url)
 
 
 // ***Here is code for converting "Base64" to javascript "File Object".***
-async function  dataURLtoFile(dataurl, filename) {
+ function  dataURLtoFile(dataurl, filename) {
      var arr = dataurl.split(',');
      var mime = arr[0].match(/:(.*?);/)[1];
      var bstr = atob(arr[1]);
@@ -305,17 +305,16 @@ class Uploader{
            let url = that.uploadedImages[checked];
            let realFilename =  GetFilename(url);
            // *** Calling both function ***
-            let dataUrl = await  toDataURL(url);
-            let fileData = await dataURLtoFile(dataUrl, realFilename);
-             // toDataURL(url)
-             // .then(dataUrl => {
-             //    var fileData = dataURLtoFile(dataUrl, realFilename);
-             //    console.log("Here is JavaScript File Object",fileData);
-             //    this._uploadFileToServer(fileData,'image-list/apiupload');
-             //
-             //
-             //
-             //  })
+
+             toDataURL(url)
+             .then(dataUrl => {
+                var fileData = dataURLtoFile(dataUrl, realFilename);
+                console.log("Here is JavaScript File Object",fileData);
+                this._uploadFileToServer(url,'image-list/apiupload');
+
+
+
+              })
          }
        })
 
@@ -370,12 +369,10 @@ class UploadService {
   }
 
   static uploadFile(file, postUrl) {
-    var file = UploadService._("hidden_uploads").files[0];
-    var formdata = new FormData();
-    formdata.append("hidden_uploads", file);
-    console.log(formdata.toString());
-
-
+    // var file = UploadService._("hidden_uploads").files[0];
+    // var formdata = new FormData();
+    // formdata.append("hidden_uploads", file);
+    // console.log(formdata.toString());
 
     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     fetch('image-list/apiupload', {
@@ -391,7 +388,7 @@ class UploadService {
       body: JSON.stringify({
 
            name: "saladin",
-          filename: formdata,
+          image_url: file,
 
 
         })
