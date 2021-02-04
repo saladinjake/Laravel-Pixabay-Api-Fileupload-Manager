@@ -6,7 +6,7 @@
 */
 
 
-/* a.clicker,a.clicker:focus,a.clicker:hover {color: #000;padding:20px;background-color: #ccc;font-size:10px;border-radius: 50px}
+a.clicker,a.clicker:focus,a.clicker:hover {color: #000;padding:20px;background-color: #ccc;font-size:10px;border-radius: 50px}
 .btn-default,.btn-default:hover,.btn-default:focus {color: #333;text-shadow: none; background-color: #fff;border: 1px solid #fff;}
 .column input[type="text"], .column select{width:100%; padding: 8px 12px;color: #000;border-radius: 5px;border: 0;
 height: 41px;}
@@ -21,7 +21,7 @@ height: 41px;}
 .masthead-brand {margin-top: 10px;margin-bottom: 10px;}.masthead-nav > li {display: inline-block;}
 .imageSec {float: left;width: 100%;position: relative;height: 176px;overflow: hidden;margin: 0 0 27px;}
 .imageSec img {height: 100%;width: 100%;}
-.lb-loader,.lightbox{text-align:center;line-height:0}.lb-dataContainer:after,.lb-outerContainer:after{content:"";clear:both} */
+.lb-loader,.lightbox{text-align:center;line-height:0}.lb-dataContainer:after,.lb-outerContainer:after{content:"";clear:both}
 
 
 .content {
@@ -35,18 +35,18 @@ background: url(./loading.svg) no-repeat 50% 50%;
 }
 
 .products {
-/* margin: 0;
+margin: 0;
 padding: 2em;
-text-align: center; */
+text-align: center;
 }
 
 .product {
 display: inline-block;
-width: 200px;
+width: 300px;
 height: 200px;
 margin: 10px;
 border-radius: 5px;
-/* background: #fafafa; */
+background: #fafafa;
 }
 
 
@@ -65,8 +65,9 @@ border-radius: 5px;
            width: 34px;
            height: 34px;
            margin-bottom: 0;
+
            border-radius: 100%;
-           background: #FFFFFF;
+           background: #FFFFF;
            border: 1px solid transparent;
            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
            cursor: pointer;
@@ -77,16 +78,17 @@ border-radius: 5px;
 .selected, .deselected {
          display: inline-block;
          width: 84px;
-         height: 24px;
+         height: 44px;
          margin-bottom: 40px;
-         border-radius: 50px;
+         border-radius: 10px;
          text-align:center;
-         color:#000;
+         color:#fff;
+         padding:20px;
 
-         margin-top:230px;
+         margin-bottom:180px;
          margin-right:7px;
 
-         background: red;
+         background: darkblue;
          border: 1px solid transparent;
          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
          cursor: pointer;
