@@ -30,7 +30,7 @@ class FrontService
         'errors' => $errors,
         'images'  => $images
        );
-      return $result;
+      return $results;
     }
 
     public function deleteRequest(Request $request){
@@ -58,7 +58,7 @@ class FrontService
          'errors' => $errors,
          'success'  => $images
         );
-       return $result;
+       return $results;
 
 
     }
