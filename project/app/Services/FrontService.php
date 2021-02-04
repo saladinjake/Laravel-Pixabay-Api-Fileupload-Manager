@@ -6,9 +6,19 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
+/**
+ * The path to the "home" service provider for your application.
+ *
+ * This is the home front service provider for search and display entity .
+ *
+ * @description : FrontService iterates through upload folder and presets for display and handles delete request
+ */
 class FrontService
 {
-
+  /**
+   *@return : Array of images
+   */
     public function IterateFileList(){
        $path =  public_path() .'/uploads/'; //public_path('uploads');
        $files = scandir($path);
@@ -32,6 +42,11 @@ class FrontService
        );
       return $results;
     }
+
+    /**
+     * @var : Request $request
+     *@return : Array
+     */
 
     public function deleteRequest(Request $request){
       $path =  public_path() .'/uploads/'; //public_path('uploads');

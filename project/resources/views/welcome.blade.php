@@ -152,7 +152,7 @@
   </div>
 
 
-<a id="uploadViaApi" href="#" style="display:none;color:#fff;text-align:center;font-size:15px" class="link-to-portfolio hover-target" ></a>
+<a id="uploadViaApi" href="#" style="display:none;color:#fff;text-align:center;font-size:15px" class="link-to-portfolio hover-target" >Go</a>
   <!-- Footer -->
 <script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
   </body>

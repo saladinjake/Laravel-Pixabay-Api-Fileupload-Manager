@@ -11,10 +11,6 @@ Objective
 Your assignment is to implement an image storage using Laravel and VueJS/Javascript.
 
 
-
-
-
-
 ## Table of Contents
 
 - [Background](#background)

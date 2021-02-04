@@ -6,27 +6,52 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Services\FrontService;
 
+/**
+ * The path to the "home" controller for your application.
+ *
+ * This is the home front for search and display entity .
+ *
+ * @description : FrontController
+ */
+
 class FrontController extends Controller
 {
+  /**
+   * @var : Request $request
+   *@var : FrontService $homeService
+   *@return : null
+   */
     public function __construct(Request $request,FrontService $homeService){
       $this->requestHandler = $request;
       $this->homeServiceHandler = $homeService;
     }
-    //
+    /**
+     *@var : null
+     *@return : View Object
+     */
     public function index(){
        return view('welcome');
     }
-
+    /**
+     *@var : null
+     *@return : View Object
+     */
     public function create(){
        return view('index');
     }
-
+    /**
+     *@var : null
+     *@return : View Object
+     */
     public function viewAll(){
         $results = $this->homeServiceHandler->IterateFileList();
         return view('uploaded',['images'=>$results['images'], 'errors'=>$results['errors'] ]);
     }
 
-
+    /**
+     *@var : Request $request
+     *@return : View Object
+     */
     function delete(Request $request){
       $path = public_path('uploads');
       $file_pointer = $request->get('_file');
