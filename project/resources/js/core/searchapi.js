@@ -1,36 +1,84 @@
-let _singleton = null;
+/*
+* @param : Number.
+*
+* @usage SearchPixaApi.attachEvents()
+*
+*/
 const API_KEY ='9592284-ac011e65dcf94b111588bba1b';
-export default class SearchPixaApi{
+export  class SearchPixaApi{
   constructor(){
     this.displayBox = document.querySelector('#imageView');
     this.paginationContainer = document.querySelector('#paginationContainer');
     this.searchBox = document.querySelector("#searchBox");
-    this.endPage = 90;
+    this.endPage = 10;
     this.pageNumber = null;
     this.searchTerm = null;
     this.imageType = 'photo';
     this.getUrl =`https://pixabay.com/api/?key=${API_KEY}`;
-    if(!_singleton){
-       _singleton = this;
-     }
-     return _singleton;
+    this.hero=   document.querySelector('#heroView');
+
   }
+
+  /*
+  * @param : null or Integer
+  *
+  *
+  *
+  */
 
   static attachEvents(val =1){
     const SearchPixaApiClass = new SearchPixaApi()
-    this.onHandleSearchRequest();
+    SearchPixaApiClass.onHandleSearchRequest();
   }
 
-  onHandleSearchRequest = () => {
-     this.searchBox.addEventListener('submit', function(evt){
-        evt.preventDefault();
-        this.searchTerm = this.searchBox.value;
-        this.refreshPage(1,this.searchTerm);
-     });
+  /*
+  * @param : null.
+  *
+  */
+
+  onShowFormBox(){
+    let that = this;
+    document.getElementById("showformbox").addEventListener("click",function(){
+      this.style.display="none";
+      that.hero.style.display ="block";
+       document.getElementById("landing").style.marginTop="-10px";
+       that.displayBox.innerHTML ='';
+
+
+    })
   }
 
-  refreshPage = (pageToLoad, searchTerm) => {
-      if (1 > pageToLoad || pageToLoad > lastPage) {
+  /*
+  * @param : null.
+  *
+  *
+  */
+  onHandleSearchRequest(){
+    let that = this;
+    if(this.searchBox){
+      this.searchBox.addEventListener('click', function(evt){
+         evt.preventDefault();
+         that.searchTerm = document.querySelector("#searchInput").value;
+         that.pageNumber = 10;
+         that.onHandleSearchRequest();
+         that.onHandleImageDisplay(10, that.searchTerm);
+         // that.onHandleSearchRequest();
+         that.onShowFormBox();
+      });
+
+    }
+
+  }
+
+  /*
+  * @param : null.
+  *
+  * @description : refresh page
+  *
+  */
+
+  refreshPage(pageToLoad, searchTerm){
+      if (1 > pageToLoad || pageToLoad > this.endPage) {
          return;
       }
       // set global pageNumber variable
@@ -39,54 +87,74 @@ export default class SearchPixaApi{
       this.onHandleImageDisplay(pageToLoad, searchTerm);
   }
 
-  onHandleImageDisplay = () =>{
+  /*
+  * @param : null.
+  *
+  * @description : display of images fro search api
+  *
+  */
+
+  onHandleImageDisplay(){
     //use fetch api with plain javascript
     let category ="";
     let counter = 0;
     let midPaginationBtn;
     this.displayBox.innerHTML = '';
-    this.getUrl+=`&q=+${this.searchTerm}&image_type=photo`
-
+    // this.getUrl+=`&q=+${this.searchTerm}&image_type=photo&pretty=true`
+    let searchTerm = document.querySelector("#searchInput").value;
+    this.getUrl = "https://pixabay.com/api/?key="+API_KEY+"&safesearch=true&q="+encodeURIComponent(searchTerm);
     fetch(this.getUrl, {
       method: 'GET',
-      headers: {
-        "Accept": 'application/json',
-        'Content-Type': 'application/json',
-      },
-      mode: 'cors'
+
     })
       .then(response => response.json())
       .then(data => {
-         if (data.status === 200) {
+
+
+         if (data.hits) {
            if(!data.totalHits){
                noSearchFound();
                return;
            }
-           lastPage = Math.ceil(data.totalHits/9);
-           if (this.pageNumber < 4){
-              loadPaginationBtns(4);
-           } else if (this.pageNumber>(this.endPage-3)){
-              loadPaginationBtns(this.endPage-3);
-           } else {
-              loadPaginationBtns(this.pageNumber);
+           this.hero.style.display="none";
+           document.getElementById("landing").style.marginTop="-480px";
+           document.getElementById("showformbox").style.display ="block";
+
+           let images = data.hits;
+           let imageDiv = '';
+
+           if(!data.totalHits){
+               noSearchFound();
+               return;
            }
 
-           //Populate the Images Container
-           let images = data.hits;
-           for (i = 0; i < images.length; i++) {
-               let imageDiv = document.createElement("div");
-               imageDiv.classList.add("imageBox");
-               imageDiv.innerHTML =
+           for (let i = 0; i < images.length; i++) {
+               imageDiv +=
                `
-               <div class="product" id="${counter++}">
-                    <img src='${images[i].webformatURL}' class="img" />
-                    <div class="selected">select</div>
-                    <div class="deselected">unselect</div>
+               <div class="col-sm-4 col-md-4 col-lg-4 product" id="1">
+                   <div class="card cardbox " >
+                      <div class="image-wrapper">
+                         <img src="${images[i].webformatURL}" class="img">
+                       </div>
+                       <div class="card-body">
+                           <div class="card-content">
+
+                           </div>
+                           <div class="">
+
+                             <div onclick="Uploader.onItemSelected(this)"  class="selected butt">select</div>
+                             <div class="deselected " onclick="Uploader.onItemDeselected(this)">unselect</div>
+
+                           </div>
+                       </div>
+                   </div>
                </div>
-               <a target="_blank" href='https://pixabay.com/users/${images[i].user}'+'-'+${images[i].user_id}>${images[i].user}</a>
-               `
-               this.displayBox.appendChild(imageDiv);
+                   `
            }
+             this.displayBox.innerHTML=imageDiv ;
+
+         }else{
+           this.displayBox.innerHTML="some error" ;
          }
       })
       .catch(error => {
@@ -96,7 +164,7 @@ export default class SearchPixaApi{
 
   }
 
-  noSearchFound = () => {
+  noSearchFound(){
      let noSearchFoundBox = document.createElement('div');
      noSearchFoundBox.innerHTML =
        `<center>
@@ -107,21 +175,6 @@ export default class SearchPixaApi{
   }
 
 
-  loadPaginationBtns = (midPaginationBtn) => {
-     this.paginationContainer.innerHTML = '';
-     let paginationButtonsList = document.createElement("ul");
-     paginationButtonsList.classList.add("theButtonsList");
-     paginationButtonsList.innerHTML =`<li class="button" onclick="refreshPage(${this.pageNumber-1})"><a>«</a></li>
-        <li class="button" onclick="refreshPage(1)"><a>1</a></li>
-        <li class="button" onclick="refreshPage(${this.midPaginationBtn-2})">${midPaginationBtn-2}</a></li>
-        <li class="button" onclick="refreshPage(${midPaginationBtn-1})">${midPaginationBtn-1}</a></li>
-        <li id="pageNumber" class="button" onclick="refreshPage(${midPaginationBtn})">${midPaginationBtn}</a></li>
-        <li class="button" onclick="refreshPage(${midPaginationBtn+1})">${midPaginationBtn+1}</a></li>
-        <li class="button" onclick="refreshPage(${midPaginationBtn+2})">${midPaginationBtn+2}</a></li>
-        <li class="button" onclick="refreshPage(${lastPage})">${lastPage}</li>
-        <li class="button" onclick="refreshPage(${this.pageNumber+1})">»</a></li>`
-
-        this.paginationContainer.appendChild(paginationButtonsList);
-  }
+  loadPaginationBtns(midPaginationBtn){}
 
 }

@@ -18,40 +18,42 @@ use App\Services\Contracts\FrontServiceInterface;
  */
 class FrontService  implements FrontServiceInterface
 {
+   public function __construct(){
+     $this->path =  public_path() .'/uploads/'; //public_path('uploads');
+     $this->files = scandir($this->path);
+     $this->allowedExtension=['gif','jpg','jpeg','png'];
+     $this->errors = [];
+     $this->images = [];
+   }
   /**
    *@return : Array of images
    */
     public function IterateFileList(){
-       $path =  public_path() .'/uploads/'; //public_path('uploads');
-       $files = scandir($path);
-       $allowedExtension=['gif','jpg','jpeg','png'];
-       $errors = [];
-       $images = [];
-       foreach ($files as $key => $file) {
+       foreach ($this->files as $key => $file) {
            $file =  $file;
            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-           if (in_array($ext, $allowedExtension) && ($ext!=".." || $ext!="." ))
+           if (in_array($ext, $this->allowedExtension) && ($ext!=".." || $ext!="." ))
            {
-             array_push($images,$file);
+             array_push($this->images,$file);
            }
        }
-       if(count($images) <=0){
-          array_push($errors,'No image found');
+       if(count($this->images) <=0){
+          array_push($this->errors,'No image found');
        }
        $results = array(
-        'errors' => $errors,
-        'images'  => $images
+        'errors' => $this->errors,
+        'images'  => $this->images
        );
       return $results;
     }
 
     /**
      * @var : Request $request
-     *@return : Array
+     *@return : Array: todo code refactor
      */
 
     public function deleteRequest(Request $request){
-      $path =  public_path() .'/uploads/'; //public_path('uploads');
+        $path =  $this->path ; //public_path('uploads');
         $file_pointer = $request->get('_file');
         $files = scandir($path);
         $errors = [];

@@ -1,14 +1,4 @@
-/*
-* @message  {String or DOMElement} The notification message contents.
-* @type     {String }              The Type of notification message (CSS class name 'ajs-{type}' to be added).
-* @wait     {Number}               The time (in seconds) to wait before the notification is auto-dismissed.
-* @callback {Function}             A callback function to be invoked when the notification is dismissed.
-*
-* @return {Object} .
-*
-* app.app(param1)
-*
-*/
+
 
 //mixins
 function GetFilename(url)
