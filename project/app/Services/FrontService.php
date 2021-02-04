@@ -10,7 +10,7 @@ class FrontService
 {
 
     public function IterateFileList(){
-       $path = public_path('uploads');
+       $path =  public_path() .'/uploads/'; //public_path('uploads');
        $files = scandir($path);
        $allowedExtension=['gif','jpg','jpeg','png'];
        $errors = [];
@@ -34,7 +34,7 @@ class FrontService
     }
 
     public function deleteRequest(Request $request){
-      $path = public_path('uploads');
+      $path =  public_path() .'/uploads/'; //public_path('uploads');
         $file_pointer = $request->get('_file');
         $files = scandir($path);
         $errors = [];
