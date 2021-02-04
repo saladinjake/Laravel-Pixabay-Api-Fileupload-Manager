@@ -26,7 +26,7 @@ class UploaderController extends Controller
      * @var : UploadService $uploader
      *@return : ['errors'=>[],'images'=>'success']
      */
-    public function uploadViaDevice(UploadService $uploader)
+    public function uploadViaDevice(UploadServiceInterface $uploader)
     {
        return $uploader->uploadViaDevice($this->requestHandler);
     }
@@ -36,7 +36,7 @@ class UploaderController extends Controller
      *@return : Array  ['errors'=>[],'images'=>'success']
      */
 
-    public function uploadViaApi(UploadService $uploader){
+    public function uploadViaApi(UploadServiceInterface $uploader){
         return $uploader->uploadViaApi($this->requestHandler);
     }
 }
