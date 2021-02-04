@@ -4,36 +4,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
+use App\Services\FrontService;
+
 class FrontController extends Controller
 {
+    public function __construct(Request $request,FrontService $homeService){
+      $this->requestHandler = $request;
+      $this->homeServiceHandler = $homeService;
+    }
     //
-    function index(){
+    public function index(){
        return view('welcome');
     }
 
-    function create(){
+    public function create(){
        return view('index');
     }
 
-    function viewAll(){
-       $path = public_path('uploads');
-       $files = scandir($path);
-       $allowedExtension=['gif','jpg','jpeg','png'];
-       $errors = [];
-       $images = [];
-       foreach ($files as $key => $file) {
-           $file =  $file;
-           $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-           if (in_array($ext, $allowedExtension) && ($ext!=".." || $ext!="." ))
-           {
-             array_push($images,$file);
-           }
-       }
-       if(count($images) <=0){
-          array_push($errors,'No image found');
-       }
-       // dd($files);
-       return view('uploaded',['images'=>$images, 'errors'=>$errors]);
+    public function viewAll(){
+        $results = $this->homeServiceHandler->IterateFileList();
+        return view('uploaded',['images'=>$results['images'], 'errors'=>$results['errors'] ]);
     }
 
     function delete(Request $request){
