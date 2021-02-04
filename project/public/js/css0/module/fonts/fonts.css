@@ -1,0 +1,19 @@
+/*
+*@description: fonts css file
+*
+*@author: Saladin Jake
+*
+*/
+
+
+
+@font-face {
+  font-family: 'ecoicon';
+  src:url('./fonts/fonts/ecoicons/ecoicon.eot');
+  src:url('./fonts/fonts/ecoicons/ecoicon.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/fonts/ecoicons/ecoicon.woff') format('woff'),
+    url('./fonts/fonts/ecoicons/ecoicon.ttf') format('truetype'),
+    url('./fonts/fonts/ecoicons/ecoicon.svg#ecoicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

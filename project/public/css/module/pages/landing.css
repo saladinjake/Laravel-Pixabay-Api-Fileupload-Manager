@@ -1,0 +1,101 @@
+/*
+*@description: landing css file
+*
+*@author: Saladin Jake
+*
+*/
+
+
+a.clicker,a.clicker:focus,a.clicker:hover {color: #000;padding:20px;background-color: #ccc;font-size:10px;border-radius: 50px}
+.btn-default,.btn-default:hover,.btn-default:focus {color: #333;text-shadow: none; background-color: #fff;border: 1px solid #fff;}
+.column input[type="text"], .column select{width:100%; padding: 8px 12px;color: #000;border-radius: 5px;border: 0;
+height: 41px;}
+
+.mt-20{margin-top:20px;}
+.site-wrapper {width: 100%;float: left;padding: 170px 0 40px;}
+.cover-container {margin-right: auto;margin-left: auto;}
+.form-control{height:41px;}
+.header {position: fixed;top: 0;left: 0;width: 100%; z-index: 10;}
+.header .inner{padding-bottom: 0; text-align: left;}
+.inner {padding:0 30px 30px;}
+.masthead-brand {margin-top: 10px;margin-bottom: 10px;}.masthead-nav > li {display: inline-block;}
+.imageSec {float: left;width: 100%;position: relative;height: 176px;overflow: hidden;margin: 0 0 27px;}
+.imageSec img {height: 100%;width: 100%;}
+.lb-loader,.lightbox{text-align:center;line-height:0}.lb-dataContainer:after,.lb-outerContainer:after{content:"";clear:both}
+
+
+.content {
+position: relative;
+min-height: 300px;
+margin: 0 0 0 300px;
+}
+
+.content--loading {
+background: url(./loading.svg) no-repeat 50% 50%;
+}
+
+.products {
+margin: 0;
+padding: 2em;
+text-align: center;
+}
+
+.product {
+display: inline-block;
+width: 300px;
+height: 200px;
+margin: 10px;
+border-radius: 5px;
+background: #fafafa;
+}
+
+
+.avatar-edit {
+   position: absolute;
+   right: 12px;
+   z-index: 1;
+   top: 10px;
+
+}
+.avatar-edit     input {
+       display: none;
+}
+.delete {
+           display: inline-block;
+           width: 34px;
+           height: 34px;
+           margin-bottom: 0;
+
+           border-radius: 100%;
+           background: #FFFFF;
+           border: 1px solid transparent;
+           box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+           cursor: pointer;
+           font-weight: normal;
+           transition: all .2s ease-in-out;
+}
+
+.selected, .deselected {
+         display: inline-block;
+         width: 84px;
+         height: 44px;
+         margin-bottom: 40px;
+         border-radius: 10px;
+         text-align:center;
+         color:#fff;
+         padding:20px;
+
+         margin-bottom:180px;
+         margin-right:7px;
+
+         background: darkblue;
+         border: 1px solid transparent;
+         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+         cursor: pointer;
+         font-weight: normal;
+         transition: all .2s ease-in-out;
+}
+.deselected{
+background: #ccc;
+opacity:0;
+}

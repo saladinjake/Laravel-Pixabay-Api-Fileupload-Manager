@@ -1,4 +1,8 @@
 {
+  "name": "unittest-frontend-backend",
+  "version": "1.0.0",
+  "description": "unit test and integration test with web driver webpack mocha selenium driver ",
+
     "private": true,
     "scripts": {
         "dev": "npm run development",
@@ -8,11 +12,25 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production"
+
+
     },
+    "keywords": [
+       "webdriver",
+       "webdriverio",
+       "selenium",
+       "integration",
+       "testing"
+     ],
+     "author": "saladin jake",
+     "license": "ISC",
+     "dependencies": {
+     },
     "devDependencies": {
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+
     }
 }

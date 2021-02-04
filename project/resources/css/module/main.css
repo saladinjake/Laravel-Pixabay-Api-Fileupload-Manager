@@ -1,0 +1,20 @@
+/*
+*@description: the main css file: this is the css barrel script
+*
+*@author: Saladin Jake
+*
+*/
+@import './chips/globals.css';
+@import './chips/animations.css';
+@import './chips/breadcrumbs.css';
+@import './chips/buttons.css';
+ @import './chips/header.css';
+@import './chips/footer.css';
+@import './chips/loading.css';
+@import './chips/images.css';
+@import './fonts/fonts.css';
+@import './pages/landing.css';
+@import './pages/error_page.css';
+@import './pages/modal_action.css';
+@import './pages/success_page.css';
+@import './pages/view_uploads.css';

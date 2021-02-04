@@ -1,0 +1,89 @@
+/*
+*@description :buttons module css file
+*
+*@author: Saladin Jake
+*
+*/
+
+.rounded {
+	  background: #ff1493;
+	  background-image: -webkit-linear-gradient(top, #ff1493, #e01283);
+	  background-image: -moz-linear-gradient(top, #ff1493, #e01283);
+	  background-image: -ms-linear-gradient(top, #ff1493, #e01283);
+	  background-image: -o-linear-gradient(top, #ff1493, #e01283);
+	  background-image: linear-gradient(to bottom, #ff1493, #e01283);
+	  -webkit-border-radius: 13;
+	  -moz-border-radius: 13;
+	  border-radius: 13px;
+	  font-family: Georgia;
+	  color: #ffffff;
+	  font-size: 20px;
+	  padding: 5px 10px;
+	  text-decoration: none;
+}
+
+.rounded:hover {
+	  background: #e66384;
+	  background-image: -webkit-linear-gradient(top, #e66384, #ff1493);
+	  background-image: -moz-linear-gradient(top, #e66384, #ff1493);
+	  background-image: -ms-linear-gradient(top, #e66384, #ff1493);
+	  background-image: -o-linear-gradient(top, #e66384, #ff1493);
+	  background-image: linear-gradient(to bottom, #e66384, #ff1493);
+	  text-decoration: none;
+}
+.normal{
+	  background: #cc708a;
+	  background-image: -webkit-linear-gradient(top, #cc708a, #b5103c);
+	  background-image: -moz-linear-gradient(top, #cc708a, #b5103c);
+	  background-image: -ms-linear-gradient(top, #cc708a, #b5103c);
+	  background-image: -o-linear-gradient(top, #cc708a, #b5103c);
+	  background-image: linear-gradient(to bottom, #cc708a, #b5103c);
+	  -webkit-border-radius: 7;
+	  -moz-border-radius: 7;
+	  border-radius: 7px;
+	  font-family: Georgia;
+	  color: #ffffff;
+	  font-size: 20px;
+	  padding: 5px 10px;
+	  text-decoration: none;
+	  -webkit-border-radius: 4;
+	  -moz-border-radius: 4;
+	  border-radius: 4px;
+	}
+	.normal:hover{
+	  background: #e66384;
+	  background-image: -webkit-linear-gradient(top, #e66384, #ff1493);
+	  background-image: -moz-linear-gradient(top, #e66384, #ff1493);
+	  background-image: -ms-linear-gradient(top, #e66384, #ff1493);
+	  background-image: -o-linear-gradient(top, #e66384, #ff1493);
+	  background-image: linear-gradient(to bottom, #e66384, #ff1493);
+	  text-decoration: none;
+	}
+
+
+
+
+
+	.link-to-portfolio {
+	  position: fixed;
+    bottom: 60px;
+    right: 30px;
+    z-index: 200;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 3px;
+    background-position: center center;
+    background-size: cover;
+		background-color: black;
+    /* background-image: url('../../../back-arrow.svg'); */
+    box-shadow: 0 0 0 3px rgba(0,0,0,.1);
+    transition: opacity .2s, border-radius .2s, box-shadow .2s;
+    transition-timing-function: ease-out;
+}
+.link-to-portfolio:hover {
+    opacity: 0.8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 20px rgba(0,0,0,.1);
+}
