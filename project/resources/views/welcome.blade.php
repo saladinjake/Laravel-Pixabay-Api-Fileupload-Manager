@@ -9,12 +9,17 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ asset('/css/application.css')}}" rel="stylesheet">
+        <link href="{{ asset('js/css/alertify.min.css') }}" rel="stylesheet">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
  <style>
  .product{
    width:300px;
  }
+ .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
  </style>
+
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ asset('js/alertify.min.js')}}"></script>
     </head>
     <!-- Styles -->
 <div class="loader" id="loader">Loading...</div>
@@ -38,7 +43,7 @@
       @endif
 
 
-      <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;">
+      <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;" id="heroView">
           <div class="card">
              <div class="image-wrapper">
                 <img src="{{ asset('img/target.png') }}" />
@@ -55,8 +60,8 @@
                              <div class="col-sm-12">
                                  <div id="url" class="column">
 
-                                     <input style="float:left;width:400px;height:56px" id="searchBox" type="text" placeholder="Search the pixabay for images by name" value="" />
-                                     <a href="javascript:void(0);" id="Search" class="clicker" style="float:right">Search</a>
+                                     <input id="searchInput" style="float:left;width:400px;height:56px"  type="text" placeholder="Search the pixabay for images by name" value="" />
+                                     <a href="javascript:void(0)"  id="searchBox" class="clicker" style="float:right">Search</a>
                                  </div>
                              </div>
                            </div>
@@ -79,44 +84,19 @@
       <div class="my_wrapper" id="landing">
       <div class="container-fluid" style="position: absolute;margin-top:-240px">
           <div class="row">
-              <h2>Search Result</h2>
+              <h2>Search Result:  <span style="display:none" id="showformbox"><p>Click to search again</p></span></h2>
+
+
+                <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                  <h3 id="status"></h3>
+                  <p id="loaded_n_total"></p>
+                  <input multiple type="file" name="allUploads[]" id="hidden_uploads" style="display:none"/>
+
+
+              <!-- <span class="btn rounded" style="display:none; margin-left:10px" >Upload</span> -->
               <div class="row"  id="imageView">
-                  <div class="col-sm-4 col-md-4 col-lg-4 product" id="1">
-                      <div class="card cardbox " >
-                         <div class="image-wrapper">
-                            <img src="img/target.png" class="img">
-                          </div>
-                          <div class="card-body">
-                              <div class="card-content">
 
-                              </div>
-                              <div class="">
-
-                                <div onclick="console.log('hello')" class="selected butt">select</div>
-                                <div class="deselected ">unselect</div>
-
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-lg-4 product" id="2">
-                      <div class="card cardbox">
-                         <div class="image-wrapper">
-                            <img src="img/team128.png" class="img">
-                          </div>
-                          <div class="card-body">
-                              <div class="card-content">
-
-
-                              </div>
-                              <div class="">
-                                <div class="selected">select</div>
-                                <div class="deselected">unselect</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-lg-4 product" id="3">
+              <!--    <div class="col-sm-4 col-md-4 col-lg-4 product" id="3">
 
 
                       <div class="card cardbox">
@@ -136,12 +116,13 @@
 
                           </div>
                       </div>
-                  </div>
+                  </div> -->
               </div>
+                <div id="paginationContainer"></div>
           </div>
       </div>
   </div>
-  <div id="paginationContainer"></div>
+
 </section>
 
 
@@ -171,10 +152,8 @@
   </div>
 
 
-<a id="upload" href="#" class="link-to-portfolio" target="”_blank”"><span>Go</span></a>
-
+<a id="uploadViaApi" href="#" style="display:none;color:#fff;text-align:center;font-size:15px" class="link-to-portfolio hover-target" ></a>
   <!-- Footer -->
-
 <script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
   </body>
 </html>

@@ -1,0 +1,40 @@
+/*
+*@description : footer css file
+*
+*@author: Saladin Jake
+*
+*/
+
+
+/*footer*/
+
+.footer-col {
+  display: block;
+  margin: 50px auto 30px;
+  padding-top: 0px;
+}
+.footer-col-head {
+  color: white;
+}
+.footer-col-text {
+  border-right: 4px solid white;
+  border-left: 4px none white;
+  color: white;
+  text-align: center;
+}
+.footer-col-text-bar-last {
+  border-right: 0px none white;
+  color: white;
+  text-align: center;
+}
+
+
+
+
+.footer-col, .footer-col a{
+    color: white;
+}
+
+.footer {
+ background-color: black;
+ padding-top: 20px;}

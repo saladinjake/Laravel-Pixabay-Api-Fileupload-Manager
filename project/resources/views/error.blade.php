@@ -14,7 +14,7 @@
    width:300px;
  }
  </style>
-
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <!-- Styles -->
 <div class="loader" id="loader">Loading...</div>
@@ -30,17 +30,14 @@
 
 
 
-      <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;">
-          <div class="card">
-             <div class="image-wrapper">
+      <div class="col-sm-4 col-md-3" style="position:absolute;margin-top:-200px;">
+          <div class="">
+             <div class="">
 
                      <br/>
-                     <h2 class="main">Sorry!!</h2><br/>
-                     <p>Your upload was not resolved. Ensure to upload only images. If it persists, please contact the administrator.
+                     <h2 class="main">{{ "Some error occured"}}</h2><br/>
+                     <p>Please wait ...
                      </p><br/><br/>
-
-                     <a class="btn btn-primary" href="{{ url('/') }}" style="background-color:black;padding:10px;border-radius:25px;color:#fff" ></a>
-               </form>
               </div>
                   <br/><br/>
                   <!-- <div class="read-more text-center">
@@ -84,5 +81,10 @@
   <!-- Footer -->
 
 <script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
+<script type="text/javascript">
+  setTimeout(()=>{
+       window.location.href="http://localhost:8000/image-list/lists"
+  },6000)
+</script>
   </body>
 </html>

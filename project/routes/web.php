@@ -18,6 +18,5 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('image-list/create/new', [FrontController::class, 'create']);
 Route::get('image-list/lists', [FrontController::class, 'viewAll']);
 Route::post('image-list/upload/via/device', [UploaderController::class, 'uploadViaDevice']);
+Route::post('image-list/apiupload', [UploaderController::class, 'uploadViaApi']);
 Route::delete('/image-list/{id}/delete',[FrontController::class, 'delete']);
-// Route::post('image-list/store', 'FrontController@store');
-// Route::get('image-list/delete/{id}', 'FrontController@destroy');

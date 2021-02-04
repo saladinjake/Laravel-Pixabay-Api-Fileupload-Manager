@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ asset('/css/application.css')}}" rel="stylesheet">
+          <link href="{{ asset('js/css/alertify.min.css') }}" rel="stylesheet">
+              <script type="text/javascript" src="{{ asset('js/alertify.min.js')}}"></script>
  <style>
  .product{
    width:300px;
@@ -27,23 +29,15 @@
             <a href="{{url('/image-list/create/new')}}" style="float:right" class="text-lg text-gray-700">Add new upload +</a>
   </div>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-      @if (count($errors) > 0)
-          <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-      </div>
-      @endif
 
 
-      <div class="col-sm-4 col-md-3 cardbox" style="position:absolute;margin-top:-200px;">
-          <div class="card">
-             <div class="image-wrapper">
+
+      <div class="col-sm-4 col-md-3" style="position:absolute;margin-top:-200px;">
+          <div class="">
+             <div class="">
 
                      <br/>
-                     <h2 class="main">{{$message || "Success"}}</h2><br/>
+                     <h2 class="main">{{ "Success"}}</h2><br/>
                      <p>Please wait ...
                      </p><br/><br/>
               </div>

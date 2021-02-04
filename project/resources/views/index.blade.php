@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ asset('/css/application.css')}}" rel="stylesheet">
+          <link href="{{ asset('js/css/alertify.min.css') }}" rel="stylesheet">
+              <script type="text/javascript" src="{{ asset('js/alertify.min.js')}}"></script>
  <style>
  .product{
    width:300px;
@@ -110,7 +112,7 @@
           </div>
   </div>
 
-
+<a id="portfolio" href="#" class="link-to-portfolio hover-target" ></a>
 
   <!-- Footer -->
 
